@@ -1,30 +1,35 @@
-class DefaultEllipse:
-
-    def __init__(self, foci1=(0, 0), foci2=(1, 0), semiMajor=2, semiMinor=1):
-        return
 
 
-class ManualEllipse(DefaultEllipse):
+class Ellipse:
 
-    def foci1(self, foci1):
-        self.foci1 = foci1
+    def __init__(self, f1=(0, 0), f2=(1, 0), Major=4, Minor=2):
+        self.f1 = f1
+        self.f2 = f2
+        self.Major = Major
+        self.Minor = Minor
 
-    def foci2(self, foci2):
-        self.foci2 = foci2
+    def foci1(self, f1):
+        self.f1 = f1
 
-    def SemiMajor(self, semiMajor):
-        self.semiMajor = semiMajor
+    def foci2(self, f2):
+        self.f2 = f2
 
-    def SemiMinor(self, semiMinor):
-        self.semiMinor = semiMinor
+    def semiMajor(self, Major):
+        self.Major = Major
 
-    # def __repr__(self):
-    #     return '{} {} {} {}'.format(self.f1, self.f2, self.Major, self.Minor)
+    def semiMinor(self, Minor):
+        self.Minor = Minor
 
-    def read(self):
-        print('fuck')
-        print('{} {} {} {}'.format(self.foci1, self.foci2, self.semiMajor, self.semiMinor))
+    def __str__(self):
+        # return 'boom'
+        return '{} {} {} {}'.format(self.f1, self.f2, self.Major, self.Minor)
 
+def Area(semiMajor, semiMinor):
+    pi = 3.14159
+    return pi * semiMajor * semiMinor
 
-hello = ManualEllipse()
-
+def Perimeter(semiMajor, semiMinor):
+    pi = 3.14159
+    h = ((semiMajor - semiMinor)**2)/((semiMajor + semiMinor)**2)
+    perimeter = pi*(semiMajor + semiMinor)*(1+((3*h)/(10+(4-(3*h))**0.5)))
+    return perimeter
