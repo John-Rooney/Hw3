@@ -27,4 +27,4 @@ class ManualEllipse(DefaultEllipse):
 
 
 hello = ManualEllipse()
-hello.read()
+
