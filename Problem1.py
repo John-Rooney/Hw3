@@ -25,11 +25,13 @@ class Ellipse:
         return '{} {} {} {}'.format(self.f1, self.f2, self.Major, self.Minor)
 
 def Area(semiMajor, semiMinor):
-    pi = 3.14159
-    return pi * semiMajor * semiMinor
+    pi = 3.1415927
+    area = pi * semiMajor * semiMinor
+    return area
 
 def Perimeter(semiMajor, semiMinor):
     pi = 3.14159
     h = ((semiMajor - semiMinor)**2)/((semiMajor + semiMinor)**2)
     perimeter = pi*(semiMajor + semiMinor)*(1+((3*h)/(10+(4-(3*h))**0.5)))
     return perimeter
+
