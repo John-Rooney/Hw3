@@ -38,7 +38,8 @@ class Ellipse:
         area = pi * self.semiMajor * self.semiMinor
         return area
 
-
+A = Ellipse()
+A.area()
 
 def Circumference(semiMajor, semiMinor):
     pi = 3.14159
