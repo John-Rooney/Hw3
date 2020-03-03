@@ -2,36 +2,47 @@
 
 class Ellipse:
 
-    def __init__(self, f1=(0, 0), f2=(1, 0), Major=4, Minor=2):
-        self.f1 = f1
-        self.f2 = f2
-        self.Major = Major
-        self.Minor = Minor
+    def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=1):
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.y2 = y2
+        self.semiMajor = semiMajor
 
-    def foci1(self, f1):
-        self.f1 = f1
+    def setFoci1(self, x1, y1):
+        self.F1 = (self.x1, self.y1)
 
-    def foci2(self, f2):
-        self.f2 = f2
+    def setFoci2(self, x2, y2):
+        self.F1 = (self.x2, self.y2)
 
-    def semiMajor(self, Major):
-        self.Major = Major
+    def setWidth(self, semiMajor):
+        self.semiMajor = semiMajor
 
-    def semiMinor(self, Minor):
-        self.Minor = Minor
+    def getFoci1(self, x1, y1):
+        return (self.x1, self.y1)
 
-    def __str__(self):
-        # return 'boom'
-        return '{} {} {} {}'.format(self.f1, self.f2, self.Major, self.Minor)
+    def getFoci2(self, x2, y2):
+        return (self.x2, self.y2)
 
-def Area(semiMajor, semiMinor):
-    pi = 3.1415927
-    area = pi * semiMajor * semiMinor
-    return area
+    def getWidth(self, semiMajor):
+        return self.semiMajor
 
-def Perimeter(semiMajor, semiMinor):
+    def semiMinor(self, x1, x2, semiMajor):
+        C2 = self.width/2
+        B2 = abs(self.x1 -self.x2)/2
+        semiMinor = (c2 - b2)**0.5
+        return semiMinor
+
+    def Area(self, semiMajor, semiMinor):
+        pi = 3.1415927
+        area = pi * self.semiMajor * self.semiMinor
+        return area
+
+
+
+def Circumference(semiMajor, semiMinor):
     pi = 3.14159
     h = ((semiMajor - semiMinor)**2)/((semiMajor + semiMinor)**2)
-    perimeter = pi*(semiMajor + semiMinor)*(1+((3*h)/(10+(4-(3*h))**0.5)))
-    return perimeter
+    Circumference = pi*(semiMajor + semiMinor)*(1+((3*h)/(10+(4-(3*h))**0.5)))
+    return Circumference
 
