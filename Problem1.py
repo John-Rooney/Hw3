@@ -3,11 +3,30 @@ from utility import area, circumference, distance
 class E:
 
     def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=1):
+
         self.x1 = x1
+        if type(self.x1) == str:
+            raise TypeError('Numbers Only Please')
+
         self.y1 = y1
+        if type(self.y1) == str:
+            raise TypeError('Numbers Only Please')
+
         self.x2 = x2
+        if type(self.x2) == str:
+            raise TypeError('Numbers Only Please')
+
         self.y2 = y2
+        if type(self.y2) == str:
+            raise TypeError('Numbers Only Please')
+
         self.semiMajor = semiMajor
+        if self.x1 == self.x2:
+            if self.semiMajor <= abs(self.y1 - self.y2):
+                raise ValueError('semiMajor must be larger than distance between x1 and x2')
+        if self.y1 == self.y2:
+            if self.semiMajor <= abs(self.x1 - self.x2):
+                raise ValueError('semiMajor must be larger than distance between y1 and y2')
 
     def setFoci1(self, x1, y1):
         """setting foci 1 of ellipse"""

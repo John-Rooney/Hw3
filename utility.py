@@ -5,17 +5,19 @@ def distance(one, two):
     dist = (xdist ** 2 + ydist ** 2) ** 0.5
     return dist
 
+
 def circumference(a, b):
     """Returns circumference of ellipse"""
-    #a = semimajor, b = semiminor
+    # a = semiMajor, b = semiMinor
     pi = 3.1415927
-    h = ((a - b)**2)/((a + b)**2)
-    circumference = pi*(a + b)*(1+((3*h)/(10+(4-(3*h))**0.5)))
+    h = ((a - b) ** 2) / ((a + b) ** 2)
+    circumference = pi * (a + b) * (1 + ((3 * h) / (10 + (4 - (3 * h)) ** 0.5)))
     return circumference
+
 
 def area(a, b):
     """Returns approximate area of ellipse"""
-    # a = semimajor, b = semiminor
+    # a = semiMajor, b = semiMinor
     pi = 3.1415927
     area = pi * a * b
     return area
