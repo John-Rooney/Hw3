@@ -1,4 +1,4 @@
-import Problem1
+import EllipseClass
 import random
 
 
@@ -36,6 +36,8 @@ def overlap(one, two):
 
     random_points = 0
     inboth = 0
+    first = 0
+    second = 0
     while random_points < 10000:
         randx = random.randrange(100000) / 100000
         randy = random.randrange(100000) / 100000
@@ -43,14 +45,22 @@ def overlap(one, two):
         randpointy = (randy * rangey) + miny
         if one.inside_edge((randx, randy)) and two.inside_edge((randx, randy)):
             inboth += 1
+        if one.inside_edge((randx, randy)):
+            first += 1
+        if two.inside_edge((randx, randy)):
+            second += 1
         random_points += 1
     pointsinboth = inboth / 10000  # ratio of points in both to total random points
     overlaparea = round(pointsinboth * areaofrectangle, 3)
 
     print('The area of overlap between these ellipses is {}'.format(overlaparea))
-    return
+    print('first ', first)
+    print('second ', second)
+    print('inboth ', inboth)
+    print('areaofrectangle ', areaofrectangle)
+    return overlaparea
 
 
-a = Problem1.E(0, 0, 0, 0, 1)
-b = Problem1.E(10, 0, 1, 0, 6)
-overlap(a, b)
+# a = E(-1, 0, 1, 0, 5)
+# b = E(0, -1, 0, 1, 5)
+# overlap(a, b)

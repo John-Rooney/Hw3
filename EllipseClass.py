@@ -1,4 +1,5 @@
-from utility import area, circumference, distance
+import utility
+
 
 class E:
 
@@ -23,10 +24,10 @@ class E:
         self.semiMajor = semiMajor
         if self.x1 == self.x2:
             if self.semiMajor <= abs(self.y1 - self.y2):
-                raise ValueError('semiMajor must be larger than distance between x1 and x2')
+                raise ValueError('semiMajor must be larger than distance between y1 and y2')
         if self.y1 == self.y2:
             if self.semiMajor <= abs(self.x1 - self.x2):
-                raise ValueError('semiMajor must be larger than distance between y1 and y2')
+                raise ValueError('semiMajor must be larger than distance between x1 and x2')
 
     def setFoci1(self, x1, y1):
         """setting foci 1 of ellipse"""
@@ -44,7 +45,7 @@ class E:
         """Returns foci 1 of ellipse"""
         return (self.x1, self.y1)
 
-    def getFoci2(self,):
+    def getFoci2(self, ):
         """Returns foci 2 of ellipse"""
         return (self.x2, self.y2)
 
@@ -56,8 +57,8 @@ class E:
         """Returns Semi Minor of ellipse"""
         if abs(self.y1 - self.y2) == 0:
             C2 = self.semiMajor
-            B2 = abs(self.x1 -self.x2)/2
-            semiMinor = (C2 - B2)**0.5
+            B2 = abs(self.x1 - self.x2) / 2
+            semiMinor = (C2 - B2) ** 0.5
         else:
             C2 = self.semiMajor
             B2 = abs(self.y1 - self.y2) / 2
@@ -68,7 +69,7 @@ class E:
         """Returns the min and max X value for the ellipse"""
         semiMinor = self.getsemiMinor()
         if abs(self.y1 - self.y2) == 0:
-            midx = abs(self.x1 - self.x2)/2
+            midx = abs(self.x1 - self.x2) / 2
             minx = round(midx - self.semiMajor, 4)
             maxx = round(midx + self.semiMajor, 4)
         else:
@@ -80,7 +81,7 @@ class E:
         """Returns the min and max Y value for the ellipse"""
         semiMinor = self.getsemiMinor()
         if abs(self.x1 - self.x2) == 0:
-            midy = abs(self.y1 - self.y2)/2
+            midy = abs(self.y1 - self.y2) / 2
             miny = round(midy - self.semiMajor, 4)
             maxy = round(midy + self.semiMajor, 4)
         else:
@@ -90,8 +91,15 @@ class E:
 
     def inside_edge(self, point):
         """returns True if a point is inside or on edge of ellipse"""
-        pointdist = distance(self.getFoci1(), point) + distance(self.getFoci2(), point)
-        if pointdist > self.semiMajor*2:
+        pointdist = utility.distance(self.getFoci1(), point) + utility.distance(self.getFoci2(), point)
+        if pointdist > self.semiMajor * 2:
+            print('False')
             return False
         else:
+            print('True')
             return True
+
+
+a = E(-1, 0, 1, 0, 3)
+print(a.getsemiMinor())
+a.inside_edge((0, 1.5))
