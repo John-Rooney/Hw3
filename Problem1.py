@@ -1,4 +1,4 @@
-
+from utility import area, circumference, distance
 
 class E:
 
@@ -40,18 +40,10 @@ class E:
         semiMinor = (C2 - B2)**0.5
         return semiMinor
 
-    def area(self):
-        """Returns approximate area of ellipse"""
-        semiMinor = self.getsemiMinor()
-        pi = 3.1415927
-        area = pi * self.semiMajor * semiMinor
-        return area
-
-    def circumference(self):
-        """Returns circumference of ellipse"""
-        semiMinor = self.getsemiMinor()
-        pi = 3.1415927
-        h = ((self.semiMajor - semiMinor)**2)/((self.semiMajor + semiMinor)**2)
-        circumference = pi*(self.semiMajor + semiMinor)*(1+((3*h)/(10+(4-(3*h))**0.5)))
-        return circumference
-
+    def inside_edge(self, point):
+        """returns True if a point is inside or on edge of ellipse"""
+        pointdist = distance(self.getFoci1(), point) + distance(self.getFoci2(), point)
+        if pointdist > self.semiMajor*2:
+            return False
+        else:
+            return True
