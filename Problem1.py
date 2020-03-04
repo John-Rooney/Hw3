@@ -1,6 +1,6 @@
 
 
-class Ellipse:
+class E:
 
     def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=1):
         self.x1 = x1
@@ -10,40 +10,48 @@ class Ellipse:
         self.semiMajor = semiMajor
 
     def setFoci1(self, x1, y1):
+        """setting foci 1 of ellipse"""
         self.F1 = (self.x1, self.y1)
 
     def setFoci2(self, x2, y2):
+        """setting foci 2 of ellipse"""
         self.F1 = (self.x2, self.y2)
 
-    def setWidth(self, semiMajor):
+    def setsemiMajor(self, semiMajor):
+        """setting Semi Major of ellipse"""
         self.semiMajor = semiMajor
 
-    def getFoci1(self, x1, y1):
+    def getFoci1(self):
+        """Returns foci 1 of ellipse"""
         return (self.x1, self.y1)
 
-    def getFoci2(self, x2, y2):
+    def getFoci2(self,):
+        """Returns foci 2 of ellipse"""
         return (self.x2, self.y2)
 
-    def getWidth(self, semiMajor):
+    def getsemiMajor(self):
+        """Returns Semi Major of ellipse"""
         return self.semiMajor
 
-    def semiMinor(self, x1, x2, semiMajor):
-        C2 = self.width/2
+    def getsemiMinor(self):
+        """Returns Semi Minor of ellipse"""
+        C2 = self.semiMajor
         B2 = abs(self.x1 -self.x2)/2
-        semiMinor = (c2 - b2)**0.5
+        semiMinor = (C2 - B2)**0.5
         return semiMinor
 
-    def Area(self, semiMajor, semiMinor):
+    def area(self):
+        """Returns approximate area of ellipse"""
+        semiMinor = self.getsemiMinor()
         pi = 3.1415927
-        area = pi * self.semiMajor * self.semiMinor
+        area = pi * self.semiMajor * semiMinor
         return area
 
-A = Ellipse()
-A.area()
-
-def Circumference(semiMajor, semiMinor):
-    pi = 3.14159
-    h = ((semiMajor - semiMinor)**2)/((semiMajor + semiMinor)**2)
-    Circumference = pi*(semiMajor + semiMinor)*(1+((3*h)/(10+(4-(3*h))**0.5)))
-    return Circumference
+    def circumference(self):
+        """Returns circumference of ellipse"""
+        semiMinor = self.getsemiMinor()
+        pi = 3.1415927
+        h = ((self.semiMajor - semiMinor)**2)/((self.semiMajor + semiMinor)**2)
+        circumference = pi*(self.semiMajor + semiMinor)*(1+((3*h)/(10+(4-(3*h))**0.5)))
+        return circumference
 
