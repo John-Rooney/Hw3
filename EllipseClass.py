@@ -1,7 +1,7 @@
 import utility
 
 
-class E:
+class Ellipse:
 
     def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=1):
 
@@ -22,12 +22,11 @@ class E:
             raise TypeError('Numbers Only Please')
 
         self.semiMajor = semiMajor
-        if self.x1 == self.x2:
-            if self.semiMajor <= abs(self.y1 - self.y2):
-                raise ValueError('semiMajor must be larger than distance between y1 and y2')
-        if self.y1 == self.y2:
-            if self.semiMajor <= abs(self.x1 - self.x2):
-                raise ValueError('semiMajor must be larger than distance between x1 and x2')
+        if self.x1 == self.x2 or self.y1 == self.y2:
+            if self.semiMajor <= utility.distance((self.x1, self.y1), (self.x2, self.y2))/2:
+                raise ValueError('semiMajor must be larger than half the distance between Foci1 and Foci2')
+        else:
+            raise ValueError('X1 and X2 or Y1 and Y2 must be equal')
 
     def setFoci1(self, x1, y1):
         """setting foci 1 of ellipse"""
@@ -55,14 +54,14 @@ class E:
 
     def getsemiMinor(self):
         """Returns Semi Minor of ellipse"""
-        if abs(self.y1 - self.y2) == 0:
-            C2 = self.semiMajor
-            B2 = abs(self.x1 - self.x2) / 2
-            semiMinor = (C2 - B2) ** 0.5
+        if self.y1 == self.y2:
+            C2 = self.semiMajor**2
+            B2 = (abs(self.x1 - self.x2) / 2)**2
+            semiMinor = (C2 - B2)**0.5
         else:
-            C2 = self.semiMajor
-            B2 = abs(self.y1 - self.y2) / 2
-            semiMinor = (C2 - B2) ** 0.5
+            C2 = self.semiMajor**2
+            B2 = (abs(self.y1 - self.y2) / 2)**2
+            semiMinor = (C2 - B2)**0.5
         return semiMinor
 
     def minmaxx(self):
@@ -93,13 +92,11 @@ class E:
         """returns True if a point is inside or on edge of ellipse"""
         pointdist = utility.distance(self.getFoci1(), point) + utility.distance(self.getFoci2(), point)
         if pointdist > self.semiMajor * 2:
-            print('False')
             return False
         else:
-            print('True')
             return True
 
 
-a = E(-1, 0, 1, 0, 3)
-print(a.getsemiMinor())
-a.inside_edge((0, 1.5))
+# a = E(-1, 0, 1, 0, 3)
+# print('semiMinor ', a.getsemiMinor())
+# a.inside_edge((0, 2.9))
