@@ -34,11 +34,12 @@ def overlap(one, two):
 
     rangex = utility.distance((maxx, 0), (minx, 0))
     rangey = utility.distance((0, maxy), (0, miny))
+
     areaofbox = rangex * rangey
+
     random_points = 0
     inboth = 0
-    # first = 0
-    # second = 0
+
     while random_points < 10000:
         randx = random.randrange(100000) / 100000
         randy = random.randrange(100000) / 100000
@@ -46,22 +47,8 @@ def overlap(one, two):
         randpointy = (randy * rangey) + miny
         if one.inside_edge((randpointx, randpointy)) and two.inside_edge((randpointx, randpointy)):
             inboth += 1
-        # if one.inside_edge((randpointx, randpointy)):
-        #     first += 1
-        # if two.inside_edge((randpointx, randpointy)):
-        #     second += 1
         random_points += 1
     pointsinboth = inboth / 10000  # ratio of points in both to total random points
     overlaparea = round(pointsinboth * areaofbox, 3)
-
-    # print('The area of overlap between these ellipses is {}'.format(overlaparea))
-    # print('first ', first)
-    # print('second ', second)
-    # print('inboth ', inboth)
-    # print('areaofbox ', areaofbox)
     return overlaparea
 
-
-# a = EllipseClass.Ellipse(0, -1, 0, 1, 20)
-# b = EllipseClass.Ellipse(0, -1, 0, 1, 20)
-# print(overlap(a, b))

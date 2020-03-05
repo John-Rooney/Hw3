@@ -3,7 +3,7 @@
 import utility
 
 
-class Ellipse:
+class Ellipse():
     """Defines and edits ellipse objects based on 2 foci and the Semi Major"""
     def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=1):
         self.x1 = x1
@@ -124,6 +124,5 @@ class Ellipse:
         else:
             return True
 
-# a=Ellipse(-1, 0, 1, 0, 3)
-# print(a.getsemiMinor())
-# print(a.inside_edge((-1, 0)))
+a=Ellipse()
+print(a)
