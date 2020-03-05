@@ -1,3 +1,5 @@
+# I have not given or received any unauthorized assistance on this assignment
+
 import EllipseClass, utility
 import random
 
@@ -32,7 +34,7 @@ def overlap(one, two):
 
     rangex = utility.distance((maxx, 0), (minx, 0))
     rangey = utility.distance((0, maxy), (0, miny))
-    areaofrectangle = rangex * rangey
+    areaofbox = rangex * rangey
     random_points = 0
     inboth = 0
     # first = 0
@@ -50,16 +52,16 @@ def overlap(one, two):
         #     second += 1
         random_points += 1
     pointsinboth = inboth / 10000  # ratio of points in both to total random points
-    overlaparea = round(pointsinboth * areaofrectangle, 3)
+    overlaparea = round(pointsinboth * areaofbox, 3)
 
     # print('The area of overlap between these ellipses is {}'.format(overlaparea))
     # print('first ', first)
     # print('second ', second)
     # print('inboth ', inboth)
-    # print('areaofrectangle ', areaofrectangle)
+    # print('areaofbox ', areaofbox)
     return overlaparea
 
 
-a = EllipseClass.Ellipse(0, -1, 0, 1, 20)
-b = EllipseClass.Ellipse(0, -1, 0, 1, 20)
-print(overlap(a, b))
+# a = EllipseClass.Ellipse(0, -1, 0, 1, 20)
+# b = EllipseClass.Ellipse(0, -1, 0, 1, 20)
+# print(overlap(a, b))

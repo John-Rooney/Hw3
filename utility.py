@@ -1,3 +1,5 @@
+# I have not given or received any unauthorized assistance on this assignment
+
 def distance(one, two):
     """returns distance between 2 points"""
     xdist = abs(one[0] - two[0])
