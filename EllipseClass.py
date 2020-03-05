@@ -70,7 +70,7 @@ class Ellipse:
         """Returns foci 1 of ellipse"""
         return (self.x1, self.y1)
 
-    def getFoci2(self, ):
+    def getFoci2(self):
         """Returns foci 2 of ellipse"""
         return (self.x2, self.y2)
 
@@ -93,7 +93,7 @@ class Ellipse:
     def minmaxx(self):
         """Returns the min and max X value for the ellipse"""
         semiMinor = self.getsemiMinor()
-        if abs(self.y1 - self.y2) == 0:
+        if self.y1 == self.y2:
             midx = abs(self.x1 - self.x2) / 2
             minx = round(midx - self.semiMajor, 4)
             maxx = round(midx + self.semiMajor, 4)
@@ -105,7 +105,7 @@ class Ellipse:
     def minmaxy(self):
         """Returns the min and max Y value for the ellipse"""
         semiMinor = self.getsemiMinor()
-        if abs(self.x1 - self.x2) == 0:
+        if self.x1 == self.x2:
             midy = abs(self.y1 - self.y2) / 2
             miny = round(midy - self.semiMajor, 4)
             maxy = round(midy + self.semiMajor, 4)
@@ -122,6 +122,6 @@ class Ellipse:
         else:
             return True
 
-a=Ellipse(1,1,2,1,4)
-a.setsemiMajor(-1)
-print(a.getsemiMajor())
+# a=Ellipse(1,1,2,1,4)
+# a.setsemiMajor(-1)
+# print(a.getsemiMajor())
