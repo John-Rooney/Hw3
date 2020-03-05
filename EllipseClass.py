@@ -88,30 +88,30 @@ class Ellipse:
             C2 = self.semiMajor**2
             B2 = (abs(self.y1 - self.y2) / 2)**2
             semiMinor = (C2 - B2)**0.5
-        return semiMinor
+        return round(semiMinor, 6)
 
     def minmaxx(self):
         """Returns the min and max X value for the ellipse"""
         semiMinor = self.getsemiMinor()
         if self.y1 == self.y2:
-            midx = abs(self.x1 - self.x2) / 2
-            minx = round(midx - self.semiMajor, 4)
-            maxx = round(midx + self.semiMajor, 4)
+            midx = (abs(self.x1 - self.x2)) / 2 + min(self.x1, self.x2)
+            minx = round(midx - self.semiMajor, 6)
+            maxx = round(midx + self.semiMajor, 6)
         else:
-            minx = round(self.x1 - semiMinor, 4)
-            maxx = round(self.x1 + semiMinor, 4)
+            minx = round(self.x1 - semiMinor, 6)
+            maxx = round(self.x1 + semiMinor, 6)
         return minx, maxx
 
     def minmaxy(self):
         """Returns the min and max Y value for the ellipse"""
         semiMinor = self.getsemiMinor()
         if self.x1 == self.x2:
-            midy = abs(self.y1 - self.y2) / 2
-            miny = round(midy - self.semiMajor, 4)
-            maxy = round(midy + self.semiMajor, 4)
+            midy = (abs(self.y1 - self.y2)) / 2 + min(self.y1, self.y2)
+            miny = round(midy - self.semiMajor, 6)
+            maxy = round(midy + self.semiMajor, 6)
         else:
-            miny = round(self.y1 - semiMinor, 4)
-            maxy = round(self.y1 + semiMinor, 4)
+            miny = round(self.y1 - semiMinor, 6)
+            maxy = round(self.y1 + semiMinor, 6)
         return miny, maxy
 
     def inside_edge(self, point):
@@ -122,6 +122,6 @@ class Ellipse:
         else:
             return True
 
-# a=Ellipse(1,1,2,1,4)
-# a.setsemiMajor(-1)
-# print(a.getsemiMajor())
+# a=Ellipse(-1, 0, 1, 0, 3)
+# print(a.getsemiMinor())
+# print(a.inside_edge((-1, 0)))
