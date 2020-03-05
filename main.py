@@ -60,6 +60,6 @@ def overlap(one, two):
     return overlaparea
 
 
-a = EllipseClass.Ellipse(0, 30, 0, -10, 100)
-b = EllipseClass.Ellipse(-33, -27, 78, -27, 100)
-overlap(a, b)
+# a = EllipseClass.Ellipse(500, 30, 500, -10, 100)
+# b = EllipseClass.Ellipse(-33, -27, 78, -27, 100)
+# overlap(a, b)

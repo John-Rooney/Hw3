@@ -2,9 +2,8 @@ import utility
 
 
 class Ellipse:
-
+    """Defines and edits ellipse objects based on 2 foci and the Semi Major"""
     def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=1):
-
         self.x1 = x1
         if type(self.x1) == str:
             raise TypeError('Numbers Only Please')
@@ -28,16 +27,43 @@ class Ellipse:
         else:
             raise ValueError('X1 and X2 or Y1 and Y2 must be equal')
 
+    def __repr__(self):
+        return 'X1:{} Y1:{} X2:{} Y2:{} Semi Major:{}'.format(self.x1, self.y1, self.x2, self.y2, self.semiMajor)
+
     def setFoci1(self, x1, y1):
         """setting foci 1 of ellipse"""
-        self.F1 = (self.x1, self.y1)
+        try:
+            float(x1)
+        except:
+            raise TypeError('Numbers Only Please')
+        try:
+            float(y1)
+        except:
+            raise TypeError('Numbers Only Please')
+        self.x1 = x1
+        self.y1 = y1
 
     def setFoci2(self, x2, y2):
         """setting foci 2 of ellipse"""
-        self.F1 = (self.x2, self.y2)
+        try:
+            float(x2)
+        except:
+            raise TypeError('Numbers Only Please')
+        try:
+            float(y2)
+        except:
+            raise TypeError('Numbers Only Please')
+        self.x2 = x2
+        self.y2 = y2
 
     def setsemiMajor(self, semiMajor):
         """setting Semi Major of ellipse"""
+        try:
+            float(semiMajor)
+        except:
+            raise TypeError('Numbers Only Please')
+        if semiMajor <= utility.distance((self.x1, self.y1), (self.x2, self.y2)) / 2:
+            raise ValueError('semiMajor must be larger than half the distance between Foci1 and Foci2')
         self.semiMajor = semiMajor
 
     def getFoci1(self):
@@ -96,7 +122,6 @@ class Ellipse:
         else:
             return True
 
-
-# a = E(-1, 0, 1, 0, 3)
-# print('semiMinor ', a.getsemiMinor())
-# a.inside_edge((0, 2.9))
+a=Ellipse(1,1,2,1,4)
+a.setsemiMajor(-1)
+print(a.getsemiMajor())
