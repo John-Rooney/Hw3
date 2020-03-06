@@ -1,6 +1,6 @@
 # I have not given or received any unauthorized assistance on this assignment
 
-import EllipseClass, utility
+import utility, EllipseClass
 import random
 
 
@@ -34,7 +34,6 @@ def overlap(one, two):
 
     rangex = utility.distance((maxx, 0), (minx, 0))
     rangey = utility.distance((0, maxy), (0, miny))
-
     areaofbox = rangex * rangey
 
     random_points = 0
@@ -51,4 +50,3 @@ def overlap(one, two):
     pointsinboth = inboth / 10000  # ratio of points in both to total random points
     overlaparea = round(pointsinboth * areaofbox, 3)
     return overlaparea
-

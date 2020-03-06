@@ -2,10 +2,9 @@
 
 import utility
 
-
-class Ellipse():
-    """Defines and edits ellipse objects based on 2 foci and the Semi Major"""
-    def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=1):
+class Shape:
+    """Sets default foci and semiMajor for ellipse objects"""
+    def __init__(self, x1=0, y1=0, x2=1, y2=0, semiMajor=10):
         self.x1 = x1
         if type(self.x1) == str:
             raise TypeError('Numbers Only Please')
@@ -28,6 +27,10 @@ class Ellipse():
                 raise ValueError('semiMajor must be larger than half the distance between Foci1 and Foci2')
         else:
             raise ValueError('X1 and X2 or Y1 and Y2 must be equal')
+
+
+class Ellipse(Shape):
+    """Edits ellipse objects based on 2 foci and the Semi Major"""
 
     def __repr__(self):
         return 'X1:{} Y1:{} X2:{} Y2:{} Semi Major:{}'.format(self.x1, self.y1, self.x2, self.y2, self.semiMajor)
@@ -123,6 +126,3 @@ class Ellipse():
             return False
         else:
             return True
-
-a=Ellipse()
-print(a)
